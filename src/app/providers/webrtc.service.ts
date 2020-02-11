@@ -8,12 +8,14 @@ const constraints: MediaStreamConstraints = {video: true, audio: false};
   providedIn: 'root'
 })
 export class WebrtcService {
-  stun = 'stun.l.google.com:19302';
-  mediaConnection: Peer.MediaConnection;
+  
   peer: Peer;
   myStream: MediaStream;
   myEl: HTMLMediaElement;
   partnerEl: HTMLMediaElement;
+
+  stun = 'stun.l.google.com:19302';
+  mediaConnection: Peer.MediaConnection;
   options: Peer.PeerJSOption;
   stunServer: RTCIceServer = {
     urls: 'stun:' + this.stun,
@@ -21,7 +23,7 @@ export class WebrtcService {
 
   constructor() {
 
-    this.options = {
+    this.options = {  // not used, by default it'll use peerjs server
       key: 'cd1ft79ro8g833di',
       debug: 3
     };
@@ -40,8 +42,6 @@ export class WebrtcService {
     this.partnerEl = partnerEl;
     try {
       this.getMedia();
-      // const stream = await navigator.mediaDevices.getUserMedia(constraints);
-      // this.handleSuccess(stream);
     } catch (e) {
       this.handleError(e);
     }
@@ -56,11 +56,6 @@ export class WebrtcService {
   }
 
   call(partnerId: string) {
-    // const conn = this.peer.connect(partnerId);
-    // conn.on('open', () => {
-    //   this.wait();
-    //   conn.send('hi!');
-    // });
     const call = this.peer.call(partnerId, this.myStream);
     call.on('stream', (stream) => {
       this.partnerEl.srcObject = stream;
@@ -71,16 +66,12 @@ export class WebrtcService {
     this.peer.on('call', (call) => {
       call.answer(this.myStream);
       call.on('stream', (stream) => {
-        this.partnerEl.srcObject = stream; // URL.createObjectURL(stream);
+        this.partnerEl.srcObject = stream;
       });
     });
   }
 
   handleSuccess(stream: MediaStream) {
-    // const videoTracks = stream.getVideoTracks();
-    // console.log('Got stream with constraints:', constraints);
-    // console.log(`Using video device: ${videoTracks[0].label}`);
-
     this.myStream = stream;
     this.myEl.srcObject = stream;
   }
@@ -105,28 +96,4 @@ export class WebrtcService {
       console.error(error);
     }
   }
-
-  
-
-  async makeCall() {
-
-  }
-  // createPeer(userId: string) {
-  //   this.peer = new Peer(userId, this.options);
-  //   this.peer.on('open', () => {
-  //     this.wait();
-  //   });
-  // }
-
-  // call(partnerId: string) {
-  //   this.mediaConnection = this.peer.call(partnerId, this.myStream);
-  // }
-
-  // wait() {
-  //   this.peer.on('call', (call) => {
-  //     call.on('stream', (stream) => {
-  //       this.partnerEl.src = URL.createObjectURL(stream);
-  //     });
-  //   });
-  // }
 }
