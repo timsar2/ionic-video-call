@@ -19,4 +19,4 @@ then run ionic with your ip address<your machin ip address> and ssl parameter.
   
 2- ionic serve --adress 192.168.43.105 --ssl
 
-if you have issue, check your firewall or antivirus.
+if you can't see url, check your firewall or antivirus.
