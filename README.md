@@ -1,5 +1,6 @@
 # ionic-video-call
 A simple video call with ionic4 and peerjs.
+more description on: https://dev.to/timsar2/ionic-video-call-by-peerjs-4fli
 
 how to run:
 connect your pc/laptop to a network, also your second device (pc/laptop/mobile) must be in same netwrok.
