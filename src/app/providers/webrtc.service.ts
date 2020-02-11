@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import 'webrtc-adapter';
 import Peer from 'peerjs';
 
 const constraints: MediaStreamConstraints = {video: true, audio: false};
@@ -8,7 +7,6 @@ const constraints: MediaStreamConstraints = {video: true, audio: false};
   providedIn: 'root'
 })
 export class WebrtcService {
-  
   peer: Peer;
   myStream: MediaStream;
   myEl: HTMLMediaElement;

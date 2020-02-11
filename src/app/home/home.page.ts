@@ -1,5 +1,4 @@
 import { Component, ElementRef } from '@angular/core';
-import 'webrtc-adapter';
 import { WebrtcService } from '../providers/webrtc.service';
 @Component({
   selector: 'app-home',
@@ -18,8 +17,7 @@ export class HomePage {
     public elRef: ElementRef
   ) {}
 
-  init() {
-    debugger;
+  login() {
     this.myEl = this.elRef.nativeElement.querySelector('#my-video');
     this.partnerEl = this.elRef.nativeElement.querySelector('#partner-video');
     this.webRTC.init(this.userId, this.myEl, this.partnerEl);
@@ -31,7 +29,6 @@ export class HomePage {
   }
 
   swapVideo(topVideo: string) {
-    debugger;
     this.topVideoFrame = topVideo;
   }
 }
