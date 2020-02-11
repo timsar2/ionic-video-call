@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="errorMsg"></div>
+
+  <video id="partner-video" (click)="swapVideo('my-video')" autoplay playsinline
+    [ngClass]="{'top-video': topVideoFrame === 'partner-video', 'main-video': topVideoFrame != 'partner-video'}">
+  </video>
+  <video id="my-video" (click)="swapVideo('partner-video')" autoplay playsinline
+    [ngClass]="{'top-video': topVideoFrame === 'my-video', 'main-video': topVideoFrame != 'my-video'}" >
+  </video>
+
+
+  <ion-row nowrap>
+    <ion-button (click)="init()">Login As: </ion-button>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="userId" placeholder="enter your nick name"></ion-input>
+    </ion-item>
+  </ion-row>
+
+  <ion-row nowrap>
+    <ion-button (click)="call()">Call To: </ion-button>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="partnerId" placeholder="your partner nick name"></ion-input>
+    </ion-item>
+  </ion-row>  
+</ion-content>
