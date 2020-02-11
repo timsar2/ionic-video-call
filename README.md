@@ -6,7 +6,7 @@ connect your pc/laptop to a network, also your second device (pc/laptop/mobile) 
 
 find your ip address, you can run ipconfig /all or look at your netwrok card detail.
 
-it must somthing like 192.168.43.105
+it must be somthing like 192.168.43.105
 
 from your console, inside of project folder run this commands:
 
