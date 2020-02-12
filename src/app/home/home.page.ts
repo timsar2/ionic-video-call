@@ -1,11 +1,12 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { WebrtcService } from '../providers/webrtc.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   topVideoFrame = 'partner-video';
   userId: string;
   partnerId: string;
@@ -17,9 +18,12 @@ export class HomePage {
     public elRef: ElementRef
   ) {}
 
-  login() {
+  ngOnInit(): void {
     this.myEl = this.elRef.nativeElement.querySelector('#my-video');
     this.partnerEl = this.elRef.nativeElement.querySelector('#partner-video');
+  }
+
+  login() {
     this.webRTC.init(this.userId, this.myEl, this.partnerEl);
   }
 

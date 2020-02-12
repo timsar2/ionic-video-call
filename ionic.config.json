@@ -1,7 +1,5 @@
 {
   "name": "ionic-peer",
-  "integrations": {
-    "cordova": {}
-  },
+  "integrations": {},
   "type": "angular"
 }
